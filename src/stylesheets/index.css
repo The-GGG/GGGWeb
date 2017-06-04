@@ -1,0 +1,8 @@
+@font-face {
+  font-family: bignoodletoo;
+  src: url('../assets/fonts/bignoodletoo.woff');
+}
+
+#root {
+  height: 100%
+}
