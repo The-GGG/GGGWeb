@@ -23,7 +23,7 @@ const App = ({players}) => {
         <Card.Group className={css(styles.roster)} itemsPerRow={3} stackable={true}>
           {
             players.map((player)=> {
-            return <PlayerComponent battletag={player.battletag} data={player.data} />
+            return <PlayerComponent battletag={player.battletag} data={player.data} position={player.position} />
           })}
         </Card.Group>
         </Container>

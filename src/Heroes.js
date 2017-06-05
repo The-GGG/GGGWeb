@@ -6,3 +6,5 @@ export const Pharah = require('./assets/images/heroes/pharah.png');
 export const Reinhardt = require('./assets/images/heroes/reinhardt.png');
 export const Roadhog = require('./assets/images/heroes/roadhog.png');
 export const Zarya = require('./assets/images/heroes/zarya.png');
+export const Soldier76 = require('./assets/images/heroes/soldier.png');
+export const Junkrat = require('./assets/images/heroes/junkrat.png');

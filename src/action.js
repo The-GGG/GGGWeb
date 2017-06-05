@@ -8,31 +8,31 @@ export const RECEIVE_OVERWATCH_STATS_FAILURE = 'RECEIVE_OVERWATCH_STATS_FAILURE'
 export const requestOverwatchStats = (battletag) => ({
   type: REQUEST_OVERWATCH_STATS,
 });
-export const receiveOverwatchStatsSuccess = (battletag, data, stats) => ({
+export const receiveOverwatchStatsSuccess = (player, data, stats) => ({
   type: RECEIVE_OVERWATCH_STATS_SUCCESS,
-  battletag: battletag,
+  player: player,
   data: data,
 });
 export const receiveOverwatchStatsFailure = () => ({
   type: RECEIVE_OVERWATCH_STATS_FAILURE,
 });
 
-export const fetchOverwatchStatsAction = (battletag) => {
+export const fetchOverwatchStatsAction = (player) => {
     return (dispatch) => {
-        dispatch(requestOverwatchStats(battletag));
-        return fetchOverwatchStats(battletag).then(response => {
+        dispatch(requestOverwatchStats(player));
+        return fetchOverwatchStats(player.battletag).then(response => {
           if(!response.ok){
             throw Error(response.status);
           }
           return response.json();
         })
-        .then(json => dispatch(receiveOverwatchStatsSuccess(battletag, json.us)))
+        .then(json => dispatch(receiveOverwatchStatsSuccess(player, json.us)))
         .catch(status => 
         {
           if(parseInt(status.message, 10) === 429)
           {
             setTimeout(()=> {
-              dispatch(fetchOverwatchStatsAction(battletag))}, 3000)
+              dispatch(fetchOverwatchStatsAction(player))}, 3000)
           }
         }
         )

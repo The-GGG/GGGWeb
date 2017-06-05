@@ -2,8 +2,8 @@ import React from 'react';
 import { Card, Grid, Icon, Image, Segment } from 'semantic-ui-react';
 import { Statistic } from 'semantic-ui-react'
 import PlatinumBadge from './assets/images/rank/platinum.png';
-import { Ana, Lucio, Reinhardt, Roadhog } from './Heroes';
-import { getLevel } from './utils/statsUtils';
+import * as Heroes from './Heroes';
+import { getCompetitiveRank, getLevel } from './utils/statsUtils';
 import './stylesheets/PlayerComponent.css';
 
 const items = [
@@ -24,42 +24,50 @@ const getHeroMain = (heroes) => {
     return main;
 }
 
-const getCompetitiveRank = (stats, mode) => {
-
-}
-
 const heroImageSource = (heroName) => {
     switch(heroName){
+        case 'pharah':
+            return Heroes.Pharah;
+        case 'soldier76':
+            return Heroes.Soldier76;
+        case 'mercy':
+            return Heroes.Mercy;
+        case 'junkrat':
+            return Heroes.Junkrat;
+        case 'dva':
+            return Heroes.Dva;
         case 'lucio':
-            return Lucio;
+            return Heroes.Lucio;
         case 'reinhardt':
-            return Reinhardt;
+            return Heroes.Reinhardt;
         case 'roadhog':
-            return Roadhog;
+            return Heroes.Roadhog;
+        case 'zarya':
+            return Heroes.Zarya;
         default:
             break;
     }
 }
 
 
-const PlayerComponent = ({battletag, data}) => (
+const PlayerComponent = ({battletag, data, position}) => (
   <Card className='player-component'>
     <Image className="profile" src={heroImageSource(getHeroMain(data.heroes))} />
     <Card.Content>
       <Card.Header>
-        {`${battletag}`}
+        {battletag}
       </Card.Header>
       <Card.Description>
         <Grid columns='equal'>
             <Grid.Row>
             <Grid.Column>
-               2000 SR
+               {getCompetitiveRank(data.stats) ? `${getCompetitiveRank(data.stats)}SR` : 'Unranked'}
             </Grid.Column>
             <Grid.Column>
                 Level {getLevel(data.stats)}
             </Grid.Column>
             <Grid.Column>
-                Support
+                {position}
             </Grid.Column>
             </Grid.Row>
         </Grid>
