@@ -7,6 +7,7 @@ import { getHeroMain } from './utils/heroUtils';
 import { getCompetitiveRank, getLevel } from './utils/statsUtils';
 import { StyleSheet, css } from 'aphrodite';
 import { getUserPicture } from './PowerPuff'
+import { getRankIcon } from './RankIcon'
 
 const heroImageSource = (heroName) => {
     switch(heroName){
@@ -45,12 +46,13 @@ const PlayerComponent = ({battletag, data, position, twitchId, name}) => (
     </div>
     <Card.Content>
       <Card.Header className={`${css(styles.battletag)} center aligned`}>
-        {battletag.replace('-','#').toUpperCase()}
+        <Image className={`${css(styles.playerIcon)}`} src={data.stats.quickplay.overall_stats.avatar}/> {battletag.replace('-','#').toUpperCase()}
       </Card.Header>
       <Card.Description>
         <Grid columns='equal'>
             <Grid.Row className={`${css(styles.row)}`}>
             <Grid.Column className="center aligned">
+               <Image className={`${css(styles.rankIcon)}`} src={getRankIcon(data.stats.quickplay.overall_stats.tier)}/>
                {getCompetitiveRank(data.stats) ? `${getCompetitiveRank(data.stats)}SR` : 'Unranked'}
             </Grid.Column>
             <Grid.Column className="center aligned">
@@ -64,7 +66,7 @@ const PlayerComponent = ({battletag, data, position, twitchId, name}) => (
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <a>
+      <a href={`https://www.twitch.tv/${twitchId}`} target="_blank">
         <Icon name={`${css(styles.twitch)} twitch`} />
         {twitchId}
       </a>
@@ -94,6 +96,12 @@ const styles = StyleSheet.create({
         'bottom': 0,
         'right': 0,
         'padding-right': '5px',
+    },
+    playerIcon: {
+        'width': '36px',
+    },
+    rankIcon: {
+        'width': '24px',
     }
 });
 

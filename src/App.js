@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
       'font-size': '48px',
       'font-family': 'bignoodletoo',
       'color': '#485166',
+      'position': 'relative',
     },
     appbar: {
       'background-color': "#000",
