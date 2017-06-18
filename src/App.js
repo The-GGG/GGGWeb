@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { fetchOverwatchStatsAction } from './action';
-import AppBar from 'material-ui/AppBar';
 import { Header, Image, Container, Card, Embed } from 'semantic-ui-react'
 import { StyleSheet, css } from 'aphrodite';
 
@@ -15,11 +14,19 @@ injectTapEventPlugin();
 const App = ({players}) => {
 
   return (
+<div className="pusher">
+  <div className="ui inverted vertical masthead center aligned segment">
+    <div className="ui text container">
+      <h1 className="ui inverted header">
+        The GGG Overwatch
+      </h1>
+    </div>
+  </div>
+
+  <div className={`${css(styles.body)} ui vertical stripe segment`}>
     <div className={`${css(styles.app)} ui grid`}>
-      <div className="sixteen wide column">
         <Container className={css(styles.appcontainer)}>
         <Header as='h1'>Roster</Header>
-        <div className={css(styles.divider)}/>
         <Card.Group className={css(styles.roster)} itemsPerRow={3} stackable={true}>
           {
             players.map((player)=> {
@@ -27,8 +34,20 @@ const App = ({players}) => {
           })}
         </Card.Group>
         </Container>
+    </div>
+  </div>
+
+  <div className="ui inverted vertical footer segment">
+    <div className="ui container">
+      <div className="ui stackable inverted divided equal height stackable grid">
+        <div className="sixteen wide column">
+          <h4 className="ui inverted header">Footer Header</h4>
+          <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+        </div>
       </div>
     </div>
+  </div>
+</div>
   );
 }
 
@@ -50,7 +69,11 @@ const styles = StyleSheet.create({
         'background-position': 'center top',
         'position': 'absolute',
         'width': '100%',
+        'left': '0'
       }
+    },
+    body: {
+      'background-color': '#f0edf2'
     },
     videoplayer: {
       'position': 'absolute',
@@ -80,6 +103,7 @@ const styles = StyleSheet.create({
     },
     roster: {
       'padding-top': '24px',
+      'padding-bottom': '24px'
     }
 });
 

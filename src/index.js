@@ -6,7 +6,7 @@ import AppContainer from './container';
 import store from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 import './stylesheets/index.css';
-import 'semantic-ui-css/semantic.min.css';
+import 'semantic-ui-css/semantic.css';
 
 ReactDOM.render(
     <Provider store={store}>
