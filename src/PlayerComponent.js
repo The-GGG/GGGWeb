@@ -6,7 +6,7 @@ import * as Heroes from './Heroes';
 import { getHeroMain } from './utils/heroUtils';
 import { getCompetitiveRank, getLevel } from './utils/statsUtils';
 import { StyleSheet, css } from 'aphrodite';
-import './stylesheets/PlayerComponent.css';
+import { getUserPicture } from './PowerPuff'
 
 const heroImageSource = (heroName) => {
     switch(heroName){
@@ -33,9 +33,16 @@ const heroImageSource = (heroName) => {
     }
 }
 
-const PlayerComponent = ({battletag, data, position}) => (
+const PlayerComponent = ({battletag, data, position, twitchId, name}) => (
   <Card className='player-component'>
-    <Image className="profile" src={heroImageSource(getHeroMain(data.heroes))} />
+    <div className="ui slide masked reveal image">
+        <div className='visible content'>
+        <Image className={`${css(styles.image)}`} src={heroImageSource(getHeroMain(data.heroes))} />
+        </div>
+        <div className={`hidden content`}>
+            <Image className={`${css(styles.image)}`} src={getUserPicture(name)} />
+        </div>
+    </div>
     <Card.Content>
       <Card.Header className={`${css(styles.battletag)} center aligned`}>
         {battletag.replace('-','#').toUpperCase()}
@@ -59,6 +66,7 @@ const PlayerComponent = ({battletag, data, position}) => (
     <Card.Content extra>
       <a>
         <Icon name={`${css(styles.twitch)} twitch`} />
+        {twitchId}
       </a>
     </Card.Content>
   </Card>
@@ -71,11 +79,21 @@ const styles = StyleSheet.create({
       'font-size': '2em',
     },
     twitch: {
-      'float': 'right',
       'color': '#6441A4',
     },
     row: {
       'font-size': '1.5em',
+    },
+    image: {
+        'height': '200px',
+        'object-fit': 'contain',
+        'width': '100%',
+    },
+    name: {
+        'position': 'absolute',
+        'bottom': 0,
+        'right': 0,
+        'padding-right': '5px',
     }
 });
 

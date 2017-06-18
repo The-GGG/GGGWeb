@@ -16,6 +16,8 @@ const overwatchReducer = (state = initialState, action) => {
         return state.update('players', players => players.concat({
             battletag: action.player.battletag,
             position: action.player.position,
+            twitchId: action.player.twitchId,
+            name: action.player.name,
             data: action.data,
         }));
     case RECEIVE_OVERWATCH_STATS_FAILURE:

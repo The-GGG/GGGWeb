@@ -3,10 +3,8 @@ import { fetchOverwatchStatsAction } from './action';
 import { Header, Image, Container, Card, Embed } from 'semantic-ui-react'
 import { StyleSheet, css } from 'aphrodite';
 
-import logo from './logo.svg';
 import PlayerComponent from './PlayerComponent';
-import Portrait from './components/Portrait';
-import OverwatchIcon from './assets/images/ow_logo.png';
+import AssembleModal from './components/AssembleModal';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
@@ -16,21 +14,23 @@ const App = ({players}) => {
   return (
 <div className="pusher">
   <div className="ui inverted vertical masthead center aligned segment">
-    <div className="ui text container">
-      <h1 className="ui inverted header">
-        The GGG Overwatch
+    <div className={`${css(styles.mainHeaderContainer)} ui text container`}>
+      <h1 className={`${css(styles.mainHeader)} ui inverted header`}>
+        The GGG Overwatch Team
       </h1>
+      <AssembleModal/>
     </div>
   </div>
 
   <div className={`${css(styles.body)} ui vertical stripe segment`}>
     <div className={`${css(styles.app)} ui grid`}>
         <Container className={css(styles.appcontainer)}>
-        <Header as='h1'>Roster</Header>
+        <Header as='h1' className={css(styles.rosterHeader)}>Roster</Header>
         <Card.Group className={css(styles.roster)} itemsPerRow={3} stackable={true}>
           {
             players.map((player)=> {
-            return <PlayerComponent battletag={player.battletag} data={player.data} position={player.position} />
+            return <PlayerComponent battletag={player.battletag} data={player.data}
+             position={player.position} twitchId={player.twitchId} name={player.name} />
           })}
         </Card.Group>
         </Container>
@@ -41,8 +41,8 @@ const App = ({players}) => {
     <div className="ui container">
       <div className="ui stackable inverted divided equal height stackable grid">
         <div className="sixteen wide column">
-          <h4 className="ui inverted header">Footer Header</h4>
-          <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+          <h4 className="ui inverted header">©2017 The GGG. All rights reserved.</h4>
+          <p>All other trademarks referenced herein are the properties of their respective owners.</p>
         </div>
       </div>
     </div>
@@ -84,6 +84,23 @@ const styles = StyleSheet.create({
     appcontainer: {
       'padding-top': '16px',
     },
+    mainHeader: {
+      'font-size': '64px',
+      'font-family': 'bignoodletoo',
+      'color': '#ffffff',
+    },
+    mainHeaderContainer: {
+      'position': 'absolute',
+      'bottom': '0',
+      'left': '0',
+      'right': '0',
+      'padding-bottom': '1em',
+    },
+    rosterHeader: {
+      'font-size': '48px',
+      'font-family': 'bignoodletoo',
+      'color': '#485166',
+    },
     appbar: {
       'background-color': "#000",
     },
@@ -102,7 +119,6 @@ const styles = StyleSheet.create({
       'opacity': '.5'
     },
     roster: {
-      'padding-top': '24px',
       'padding-bottom': '24px'
     }
 });

@@ -1,9 +1,0 @@
-.player-component > .profile {
-    height: 200px;
-    object-fit: contain;
-}
-
-.icon-twitch {
-    background-image: url('../assets/images/twitch.png');
-    background-position: center center;
-}
