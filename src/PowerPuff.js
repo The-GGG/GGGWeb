@@ -28,7 +28,6 @@ export const getUserPicture = (name) => {
         case 'tina':
             return Tina;
         default:
-            return Tina
             break;
     }
 }

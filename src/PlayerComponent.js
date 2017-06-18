@@ -1,7 +1,5 @@
 import React from 'react';
-import { Card, Grid, Icon, Image, Segment } from 'semantic-ui-react';
-import { Statistic } from 'semantic-ui-react'
-import PlatinumBadge from './assets/images/rank/platinum.png';
+import { Card, Grid, Icon, Image } from 'semantic-ui-react';
 import * as Heroes from './Heroes';
 import { getHeroMain } from './utils/heroUtils';
 import { getCompetitiveRank, getLevel } from './utils/statsUtils';
@@ -66,8 +64,8 @@ const PlayerComponent = ({battletag, data, position, twitchId, name}) => (
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <a href={`https://www.twitch.tv/${twitchId}`} target="_blank">
-        <Icon name={`${css(styles.twitch)} twitch`} />
+      <a href={`https://www.twitch.tv/${twitchId}`} target="_blank" rel="noopener noreferrer">
+        <Icon className={`${css(styles.twitch)} twitch`} />
         {twitchId}
       </a>
     </Card.Content>

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { fetchOverwatchStatsAction } from './action';
-import { Header, Image, Container, Card, Embed } from 'semantic-ui-react'
+import { Header, Container, Card, Image } from 'semantic-ui-react'
 import { StyleSheet, css } from 'aphrodite';
 
 import PlayerComponent from './PlayerComponent';
 import AssembleModal from './components/AssembleModal';
 
+import VideoComponent from './VideoComponent';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
@@ -14,6 +14,9 @@ const App = ({players}) => {
   return (
 <div className="pusher">
   <div className="ui inverted vertical masthead center aligned segment">
+    <div>
+    <VideoComponent/>
+    </div>
     <div className={`${css(styles.mainHeaderContainer)} ui text container`}>
       <h1 className={`${css(styles.mainHeader)} ui inverted header`}>
         The GGG Overwatch Team
@@ -29,7 +32,7 @@ const App = ({players}) => {
         <Card.Group className={css(styles.roster)} itemsPerRow={3} stackable={true}>
           {
             players.map((player)=> {
-            return <PlayerComponent battletag={player.battletag} data={player.data}
+            return <PlayerComponent key={player.battletag} battletag={player.battletag} data={player.data}
              position={player.position} twitchId={player.twitchId} name={player.name} />
           })}
         </Card.Group>
@@ -75,11 +78,8 @@ const styles = StyleSheet.create({
     body: {
       'background-color': '#f0edf2'
     },
-    videoplayer: {
-      'position': 'absolute',
-      'right': '0',
-      'bottom': '0',
-      'height': '100%',
+    video: {
+      'width': '1024px',
     },
     appcontainer: {
       'padding-top': '16px',
@@ -90,11 +90,6 @@ const styles = StyleSheet.create({
       'color': '#ffffff',
     },
     mainHeaderContainer: {
-      'position': 'absolute',
-      'bottom': '0',
-      'left': '0',
-      'right': '0',
-      'padding-bottom': '1em',
     },
     rosterHeader: {
       'font-size': '48px',
