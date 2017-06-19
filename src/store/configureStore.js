@@ -20,7 +20,7 @@ const players = [
     {name: 'jeff', twitchId: 'jefdotc', battletag: 'rftr-1562', position: 'flex', data: {}},
     {name: 'tina', twitchId: '00tuna', battletag: 'tuna-12309', position: 'support', data: {}},
     {name: 'edward', twitchId: 'the_sinologist', battletag: 'Coldie-1799', position: 'dps', data: {}},
-    {name: 'JP', twitchId: 'superjipped', battletag: 'Jipped-11636', position: 'dps', data: {}},
+    {name: 'jp', twitchId: 'superjipped', battletag: 'Jipped-11636', position: 'dps', data: {}},
     {name: 'irwin', twitchId: 'irwinbilling', battletag: 'stormh4x-1653', position: 'dps', data: {}},
     {name: 'christine', twitchId: 'stingpan', battletag: 'stingpan-1838', position: 'tank', data: {}},
     {name: 'dan', twitchId: 'coppio', battletag: 'grapefruit-11670', position: 'flex', data: {}},
