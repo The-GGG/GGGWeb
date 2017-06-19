@@ -15,6 +15,7 @@ class VideoComponent extends React.Component {
         'https://clips-media-assets.twitch.tv/vod-142006055-offset-4605.745333333313-16.749999999999993.mp4',
         'https://clips-media-assets.twitch.tv/vod-142006055-offset-3962.5956666666466-16.833333333333346.mp4',
         'https://clips-media-assets.twitch.tv/vod-136651967-offset-36.mp4',
+        'https://media.giphy.com/media/3oKIP9gyYmdwfhy6WY/giphy-hd.mp4',
     ];
 
     var count=videos.length;
