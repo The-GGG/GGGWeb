@@ -9,11 +9,16 @@ class VideoComponent extends React.Component {
         'https://clips-media-assets.twitch.tv/vod-152180280-offset-5708.333333333333-16.333333333333343.mp4',
         'https://clips-media-assets.twitch.tv/vod-151973134-offset-1495.996-15.33333333333331.mp4',
         'https://clips-media-assets.twitch.tv/vod-150095329-offset-3858.2803333333536-15.8333333333333.mp4',
-        'https://clips-media-assets.twitch.tv/vod-147029359-offset-38.58333333333324-16.083333333333357.mp4'
+        'https://clips-media-assets.twitch.tv/vod-147029359-offset-38.58333333333324-16.083333333333357.mp4',
+        'https://clips-media-assets.twitch.tv/vod-140227580-offset-2028.4643333333333-16.083333333333332.mp4',
+        'https://clips-media-assets.twitch.tv/vod-140227580-offset-1566.948-16.000000000000004.mp4',
+        'https://clips-media-assets.twitch.tv/vod-142006055-offset-4605.745333333313-16.749999999999993.mp4',
+        'https://clips-media-assets.twitch.tv/vod-142006055-offset-3962.5956666666466-16.833333333333346.mp4',
+        'https://clips-media-assets.twitch.tv/vod-136651967-offset-36.mp4',
     ];
 
     var count=videos.length;
-    var index = 0;
+    var index = Math.floor(Math.random() * count);
     var player=document.getElementById('myVideo');
     var mp4Vid = document.getElementById('mp4Source');
     $(mp4Vid).attr('src', videos[index]);
@@ -24,7 +29,7 @@ class VideoComponent extends React.Component {
     function myHandler(e)
     {
         
-        index = (index+1)%count;
+        index = (index+1) % count;
         if(!e) 
         {
             e = window.event; 
@@ -48,7 +53,8 @@ const styles = StyleSheet.create({
       'width': '1024px',
       'height': '576px',
       'background': 'black',
-    }
+      '@media (max-width: 1024px)': { display: 'none'}
+    },
 })
 
 export default VideoComponent;
