@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import overwatchReducer from '../reducer'
-import { fetchOverwatchStatsAction } from '../action';
+import { fetchOverwatchStatsAction, fetchOverwatchVideosAction } from '../action';
 
 let middleware = applyMiddleware(thunkMiddleware);
 if (process.env.NODE_ENV === 'development') {
@@ -30,5 +30,7 @@ const players = [
 players.forEach((player)=>{
     store.dispatch(fetchOverwatchStatsAction(player));
 });
-  
+
+//store.dispatch(fetchOverwatchVideosAction());
+
 export default store;

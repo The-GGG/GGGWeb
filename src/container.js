@@ -4,6 +4,7 @@ import { sortByRank } from './utils/heroUtils';
 
 const mapStateToProps = state => ({
   players: state.get('players').sort( sortByRank ),
+  videos: state.get('videos'),
 });
 
 const mapDispatchToProps = dispatch => ({

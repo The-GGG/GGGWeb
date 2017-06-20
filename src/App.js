@@ -9,13 +9,13 @@ import VideoComponent from './VideoComponent';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-const App = ({players}) => {
+const App = ({players, videos}) => {
 
   return (
 <div className="pusher">
   <div className="ui inverted vertical masthead center aligned segment">
     <div>
-    <VideoComponent/>
+    <VideoComponent videos={videos}/>
     </div>
     <div className={`${css(styles.mainHeaderContainer)} ui text container`}>
       <h1 className={`${css(styles.mainHeader)} ui inverted header`}>
