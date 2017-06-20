@@ -31,6 +31,6 @@ players.forEach((player)=>{
     store.dispatch(fetchOverwatchStatsAction(player));
 });
 
-//store.dispatch(fetchOverwatchVideosAction());
+store.dispatch(fetchOverwatchVideosAction());
 
 export default store;

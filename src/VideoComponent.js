@@ -3,13 +3,19 @@ import { StyleSheet, css } from 'aphrodite';
 import $ from "jquery";
 
 class VideoComponent extends React.Component {
-  componentDidMount() {
+
+  shouldComponentUpdate(nextProps) {
+    return (this.props.videos !== nextProps.videos);
+  }
+
+  componentDidUpdate() {
     var self = this;
-    var count=this.props.videos.count();
+    var count=this.props.videos.length;
+    console.log(count);
     var index = Math.floor(Math.random() * count);
     var player=document.getElementById('myVideo');
     var mp4Vid = document.getElementById('mp4Source');
-    $(mp4Vid).attr('src', this.props.videos.get(index));
+    $(mp4Vid).attr('src', this.props.videos[index]);
     player.load();
     player.play();
     player.addEventListener('ended',myHandler,false);
@@ -22,7 +28,7 @@ class VideoComponent extends React.Component {
         {
             e = window.event; 
         }
-        $(mp4Vid).attr('src', self.props.videos.get(index));
+        $(mp4Vid).attr('src', self.props.videos[index]);
         player.load();
         player.play();
     }
