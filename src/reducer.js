@@ -5,11 +5,13 @@ import {
     RECEIVE_OVERWATCH_STATS_FAILURE,
     RECEIVE_OVERWATCH_STATS_SUCCESS,
     RECEIVE_OVERWATCH_VIDEOS_SUCCESS,
+    SET_AUTHENTICATION_TOKEN,
 } from './action';
 
 const initialState = Map({
     players: List([]),
-    videos: List([])
+    videos: List([]),
+    token: ''
 })
 
 const overwatchReducer = (state = initialState, action) => {
@@ -24,6 +26,8 @@ const overwatchReducer = (state = initialState, action) => {
         }));
     case RECEIVE_OVERWATCH_VIDEOS_SUCCESS:
         return state.set('videos', action.videos);
+    case SET_AUTHENTICATION_TOKEN:
+        return state.set('token', action.token);
     default:
       return state
   }

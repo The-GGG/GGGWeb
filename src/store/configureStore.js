@@ -1,8 +1,8 @@
 import { createStore, compose, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import overwatchReducer from '../reducer'
-import { fetchOverwatchStatsAction, fetchOverwatchVideosAction } from '../action';
-
+import { fetchOverwatchStatsAction, fetchOverwatchVideosAction, setAuthenticationToken } from '../action';
+import { getCookie } from '../utils/cookieUtils';
 let middleware = applyMiddleware(thunkMiddleware);
 if (process.env.NODE_ENV === 'development') {
 middleware = compose(
@@ -26,6 +26,22 @@ const players = [
     {name: 'dan', twitchId: 'coppio', battletag: 'grapefruit-11670', position: 'flex', data: {}},
     {name: 'tina', twitchId: '00tuna', battletag: 'ori0n-11251', position: 'support', data: {}},
 ]
+
+
+let token = getCookie('token');
+
+// First check if token exists in cookie then check query parameter.
+if(!token) {
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    token = url.searchParams.get("token");
+    if(token) {
+        document.cookie = `token=${token}`;
+        store.dispatch(setAuthenticationToken(token));
+    }
+} else {
+    store.dispatch(setAuthenticationToken(token));
+}
 
 players.forEach((player)=>{
     store.dispatch(fetchOverwatchStatsAction(player));

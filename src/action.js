@@ -8,6 +8,8 @@ export const RECEIVE_OVERWATCH_STATS_FAILURE = 'RECEIVE_OVERWATCH_STATS_FAILURE'
 export const REQUEST_OVERWATCH_VIDEOS = 'REQUEST_OVERWATCH_VIDEOS';
 export const RECEIVE_OVERWATCH_VIDEOS_SUCCESS = 'RECEIVE_OVERWATCH_VIDEOS';
 
+export const SET_AUTHENTICATION_TOKEN = 'SET_AUTHENTICATION_TOKEN';
+
 export const requestOverwatchStats = (battletag) => ({
   type: REQUEST_OVERWATCH_STATS,
 });
@@ -60,3 +62,8 @@ export const fetchOverwatchVideosAction = () => {
     .then(json => dispatch(receiveOverwatchVideosSuccess(json)));
   }
 }
+
+export const setAuthenticationToken = (token) => ({
+  type: SET_AUTHENTICATION_TOKEN,
+  token
+})
