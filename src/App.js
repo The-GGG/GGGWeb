@@ -5,7 +5,7 @@ import { StyleSheet, css } from 'aphrodite';
 import PlayerComponent from './PlayerComponent';
 import AssembleModal from './components/AssembleModal';
 
-import VideoComponent from './VideoComponent';
+import VideoComponent from './components/VideoComponent';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
