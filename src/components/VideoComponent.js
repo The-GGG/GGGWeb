@@ -11,7 +11,6 @@ class VideoComponent extends React.Component {
   componentDidUpdate() {
     var self = this;
     var count=this.props.videos.length;
-    console.log(count);
     var index = Math.floor(Math.random() * count);
     var player=document.getElementById('myVideo');
     var mp4Vid = document.getElementById('mp4Source');

@@ -3,19 +3,27 @@ import { Button, Header, Image, Modal } from 'semantic-ui-react'
 import GGG from '../assets/images/ggg.jpg';
 import { StyleSheet, css } from 'aphrodite';
 
-const AssembleModal = (isAuthenticated) => (
+import TimeComponent from './TimeComponent';
+
+const AssembleModal = ({username, token, postAssembleAction, hasAssembled}) => {
+
+  return (
 <Modal className={css(styles.modal)} trigger={
     <div className="ui orange button">ASSEMBLE THE GGG!</div>}  closeIcon='close'>
     <Modal.Content image className={css(styles.content)}>
+      <div className="ui loader"></div>
     <div className={css(styles.header)}>
     <div>ARE YOU SURE YOU WANT TO ASSEMBLE THE GGG?</div>
       <a className={css(styles.button)} href="https://slack.com/oauth/authorize?scope=identity.basic,identity.team&client_id=71819641744.173400203236">
         <div className="ui orange button">ASSEMBLE!</div>
       </a>
+      <button className="ui orange button" onClick={() => postAssembleAction(token, 'hello world')}>Orange</button>
     </div>
+    <div className={css(styles.username)}>Logged in as: {username} {token}</div>
     </Modal.Content>
   </Modal>
 )
+}
 
 const styles = StyleSheet.create({
     header: {
@@ -51,6 +59,14 @@ const styles = StyleSheet.create({
         'opacity': '.8',
         'background-size': 'cover',
       },
+    },
+    username: {
+      'position': 'absolute',
+      'font-family': 'bignoodletoo',
+      'color': '#FFF',
+      'top': '0',
+      'right': '0',
+      'padding': '4px',
     }
 })
 

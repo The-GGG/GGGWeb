@@ -1,5 +1,5 @@
 // Action types
-import { fetchOverwatchStats, fetchVideoReel } from './api/owapi';
+import { fetchOverwatchStats, fetchVideoReel, fetchSlackUserInfo, postAssembleMessage } from './api/owapi';
 
 export const REQUEST_OVERWATCH_STATS = 'REQUEST_OVERWATCH_STATS';
 export const RECEIVE_OVERWATCH_STATS_SUCCESS = 'RECEIVE_OVERWATCH_STATS_SUCCESS';
@@ -9,6 +9,13 @@ export const REQUEST_OVERWATCH_VIDEOS = 'REQUEST_OVERWATCH_VIDEOS';
 export const RECEIVE_OVERWATCH_VIDEOS_SUCCESS = 'RECEIVE_OVERWATCH_VIDEOS';
 
 export const SET_AUTHENTICATION_TOKEN = 'SET_AUTHENTICATION_TOKEN';
+
+export const REQUEST_SLACK_INFO = 'REQUEST_SLACK_INFO';
+export const RECEIVE_SLACK_INFO = 'RECEIVE_SLACK_INFO';
+
+export const POST_REQUEST_ASSEMBLE = 'POST_REQUEST_ASSEMBLE';
+export const POST_RECEIVE_ASSEMBLE_SUCCESS = 'POST_RECEIVE_ASSEMBLE_SUCCESS';
+
 
 export const requestOverwatchStats = (battletag) => ({
   type: REQUEST_OVERWATCH_STATS,
@@ -63,7 +70,39 @@ export const fetchOverwatchVideosAction = () => {
   }
 }
 
-export const setAuthenticationToken = (token) => ({
-  type: SET_AUTHENTICATION_TOKEN,
-  token
+export const receiveSlackInfo = (token, username) => ({
+  type: RECEIVE_SLACK_INFO,
+  token,
+  username
 })
+
+export const fetchSlackUserInfoAction = (token) => {
+  return (dispatch) => {
+    return fetchSlackUserInfo(token).then(response => {
+          return response.json();
+        })
+        .then(json => dispatch(receiveSlackInfo(token, json.user.name)));
+  }
+}
+
+export const postRequestAssemble = () => ({
+  type: POST_REQUEST_ASSEMBLE,
+})
+export const postAssembleSuccess = () => ({
+  type: POST_RECEIVE_ASSEMBLE_SUCCESS
+})
+
+export const postAssembleAction = (token, message) => {
+  return (dispatch) => {
+    dispatch(postRequestAssemble());
+    return postAssembleMessage(token, message).then(response => {
+      if(response.ok)
+      {
+        dispatch(postAssembleSuccess());
+      }
+    })
+    .catch((err) => {
+
+    })
+  }
+}

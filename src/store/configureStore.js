@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import overwatchReducer from '../reducer'
-import { fetchOverwatchStatsAction, fetchOverwatchVideosAction, setAuthenticationToken } from '../action';
+import { fetchOverwatchStatsAction, fetchOverwatchVideosAction, fetchSlackUserInfoAction } from '../action';
 import { getCookie } from '../utils/cookieUtils';
 let middleware = applyMiddleware(thunkMiddleware);
 if (process.env.NODE_ENV === 'development') {
@@ -37,10 +37,10 @@ if(!token) {
     token = url.searchParams.get("token");
     if(token) {
         document.cookie = `token=${token}`;
-        store.dispatch(setAuthenticationToken(token));
+        store.dispatch(fetchSlackUserInfoAction(token));
     }
 } else {
-    store.dispatch(setAuthenticationToken(token));
+    store.dispatch(fetchSlackUserInfoAction(token));
 }
 
 players.forEach((player)=>{

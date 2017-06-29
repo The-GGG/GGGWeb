@@ -9,8 +9,7 @@ import VideoComponent from './components/VideoComponent';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-const App = ({players, videos}) => {
-
+const App = ({players, videos, username, token, postAssembleAction, hasAssembled}) => {
   return (
 <div className="pusher">
   <div className="ui inverted vertical masthead center aligned segment">
@@ -21,7 +20,7 @@ const App = ({players, videos}) => {
       <h1 className={`${css(styles.mainHeader)} ui inverted header`}>
         The GGG Overwatch Team
       </h1>
-      <AssembleModal/>
+      <AssembleModal postAssembleAction={postAssembleAction} username={username} token={token} hasAssembled={hasAssembled}/>
     </div>
   </div>
 
