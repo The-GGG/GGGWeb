@@ -5,21 +5,29 @@ import { StyleSheet, css } from 'aphrodite';
 
 import TimeComponent from './TimeComponent';
 
+const AssembleButton = ({username, token, postAssembleAction}) => {
+  return (
+    <div>
+  {username ? 
+    <button className={`${css(styles.button)} ui orange button`} onClick={() => postAssembleAction(token, 'hello world')}>ASSEMBLE!</button>: <a className={css(styles.button)} href="https://slack.com/oauth/authorize?scope=identity.basic,identity.team&client_id=71819641744.173400203236">
+        <div className={`${css(styles.button)} ui orange button`}>ASSEMBLE!</div>
+      </a>}
+    </div>)
+}
+
 const AssembleModal = ({username, token, postAssembleAction, hasAssembled}) => {
 
   return (
 <Modal className={css(styles.modal)} trigger={
     <div className="ui orange button">ASSEMBLE THE GGG!</div>}  closeIcon='close'>
     <Modal.Content image className={css(styles.content)}>
-      <div className="ui loader"></div>
+      { hasAssembled === 'yes' ? <div className={css(styles.header)}>THANK YOU FOR ASSEMBLING THE GGG!</div> : <div>
     <div className={css(styles.header)}>
     <div>ARE YOU SURE YOU WANT TO ASSEMBLE THE GGG?</div>
-      <a className={css(styles.button)} href="https://slack.com/oauth/authorize?scope=identity.basic,identity.team&client_id=71819641744.173400203236">
-        <div className="ui orange button">ASSEMBLE!</div>
-      </a>
-      <button className="ui orange button" onClick={() => postAssembleAction(token, 'hello world')}>Orange</button>
+      <AssembleButton username={username} token={token} postAssembleAction={postAssembleAction} />
     </div>
-    <div className={css(styles.username)}>Logged in as: {username} {token}</div>
+    <div className={css(styles.username)}>{username ? `Logged in as: ${username}` : ``}</div></div>
+      }
     </Modal.Content>
   </Modal>
 )
@@ -32,11 +40,6 @@ const styles = StyleSheet.create({
       'font-size': '48px',
       'color': '#FFFFFF',
       'position': 'relative',
-    },
-    button: {
-      'align-self': 'center',
-      'margin-top': '20px',
-      'font-family': 'bignoodletoo',
     },
     image: {
       'align-self': 'center',
@@ -66,7 +69,7 @@ const styles = StyleSheet.create({
       'color': '#FFF',
       'top': '0',
       'right': '0',
-      'padding': '4px',
+      'padding': '12px',
     }
 })
 
