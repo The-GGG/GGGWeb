@@ -5,23 +5,22 @@ import { StyleSheet, css } from 'aphrodite';
 import PlayerComponent from './PlayerComponent';
 import AssembleModal from './components/AssembleModal';
 
-import VideoComponent from './VideoComponent';
+import VideoComponent from './components/VideoComponent';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-const App = ({players}) => {
-
+const App = ({players, videos, username, token, postAssembleAction, hasAssembled}) => {
   return (
 <div className="pusher">
   <div className="ui inverted vertical masthead center aligned segment">
     <div>
-    <VideoComponent/>
+    <VideoComponent videos={videos}/>
     </div>
     <div className={`${css(styles.mainHeaderContainer)} ui text container`}>
       <h1 className={`${css(styles.mainHeader)} ui inverted header`}>
         The GGG Overwatch Team
       </h1>
-      <AssembleModal/>
+      <AssembleModal postAssembleAction={postAssembleAction} username={username} token={token} hasAssembled={hasAssembled}/>
     </div>
   </div>
 
@@ -33,7 +32,7 @@ const App = ({players}) => {
           {
             players.map((player)=> {
             return <PlayerComponent key={player.battletag} battletag={player.battletag} data={player.data}
-             position={player.position} twitchId={player.twitchId} name={player.name} />
+             position={player.position} twitchId={player.twitchId} name={player.name} youtube={player.youtube} discordId={player.discordId} />
           })}
         </Card.Group>
         </Container>

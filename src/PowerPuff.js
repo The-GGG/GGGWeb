@@ -3,10 +3,10 @@ export const Cat = require('./assets/images/powerpuff/cat.png');
 export const Christine = require('./assets/images/powerpuff/christine.png');
 export const Dan = require('./assets/images/powerpuff/dan.png');
 export const Edward = require('./assets/images/powerpuff/edward.png');
-export const JP = require('./assets/images/powerpuff/tina.png'); // get jp
+export const JP = require('./assets/images/powerpuff/jp.png');
 export const Irwin = require('./assets/images/powerpuff/irwin.png');
 export const Jeff = require('./assets/images/powerpuff/jeff.png');
-export const Matt = require('./assets/images/powerpuff/matt.png'); // get matt
+export const Matt = require('./assets/images/powerpuff/matt.png');
 export const Tina = require('./assets/images/powerpuff/tina.png');
 
 export const getUserPicture = (name) => {
@@ -25,6 +25,8 @@ export const getUserPicture = (name) => {
             return Irwin;
         case 'jeff':
             return Jeff;
+        case 'jp':
+            return JP;
         case 'matt':
             return Matt;
         case 'tina':
