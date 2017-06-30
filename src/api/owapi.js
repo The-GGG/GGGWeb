@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-const SERVER_HOST = 'http://localhost:5000';
+const SERVER_HOST = 'https://ggg-spotify.azurewebsites.net';
 
 export const fetchMembers = () => {
     return fetch(`${SERVER_HOST}/members`);
