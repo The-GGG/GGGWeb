@@ -6,6 +6,7 @@ import { getCompetitiveRank, getLevel } from './utils/statsUtils';
 import { StyleSheet, css } from 'aphrodite';
 import { getUserPicture } from './PowerPuff'
 import { getRankIcon } from './RankIcon'
+import DiscordIcon from './assets/images/discord.png';
 
 const heroImageSource = (heroName) => {
     switch(heroName){
@@ -32,7 +33,7 @@ const heroImageSource = (heroName) => {
     }
 }
 
-const PlayerComponent = ({battletag, data, position, twitchId, name}) => (
+const PlayerComponent = ({battletag, data, position, twitchId, name, youtube, discordId}) => (
   <Card className='player-component'>
     <div className="ui slide masked reveal image">
         <div className='visible content'>
@@ -44,7 +45,8 @@ const PlayerComponent = ({battletag, data, position, twitchId, name}) => (
     </div>
     <Card.Content>
       <Card.Header className={`${css(styles.battletag)} center aligned`}>
-        <Image className={`${css(styles.playerIcon)}`} src={data.stats.quickplay.overall_stats.avatar}/> {battletag.replace('-','#').toUpperCase()}
+        <Image className={`${css(styles.playerIcon)}`} src={data.stats.quickplay.overall_stats.avatar}/> 
+        <a className={css(styles.overbuffLink)} href={`https://www.overbuff.com/players/pc/${battletag}`} target="_blank" rel="noopener noreferrer">{battletag.replace('-','#').toUpperCase()}</a>
       </Card.Header>
       <Card.Description>
         <Grid columns='equal'>
@@ -64,10 +66,24 @@ const PlayerComponent = ({battletag, data, position, twitchId, name}) => (
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <a href={`https://www.twitch.tv/${twitchId}`} target="_blank" rel="noopener noreferrer">
+        { twitchId ?
+      <a className={css(styles.extraContentItem)} href={`https://www.twitch.tv/${twitchId}`} target="_blank" rel="noopener noreferrer">
         <Icon className={`${css(styles.twitch)} twitch`} />
         {twitchId}
-      </a>
+      </a> : undefined
+        }
+        { youtube ?
+        <a className={css(styles.extraContentItem)} href={`https://www.youtube.com/channel/${youtube.id}`} target="_blank" rel="noopener noreferrer">
+            <Icon className={`${css(styles.youtube)} youtube play`} />
+            {youtube.name}
+        </a> : undefined
+        }
+        { discordId ?
+        <a className={css(styles.extraContentItem)}>
+            <Image className={css(styles.discord)} src={DiscordIcon} />
+            {discordId}
+        </a> : undefined
+        }
     </Card.Content>
   </Card>
 )
@@ -78,8 +94,17 @@ const styles = StyleSheet.create({
       'font-weight': 'bold',
       'font-size': '2em',
     },
+    discord: {
+        'width': '15px',
+    },
+    extraContentItem: {
+        'padding-right': '16px',
+    },
     twitch: {
       'color': '#6441A4',
+    },
+    youtube: {
+      'color': '#CD201F',
     },
     row: {
       'font-size': '1.5em',
@@ -96,10 +121,14 @@ const styles = StyleSheet.create({
         'padding-right': '5px',
     },
     playerIcon: {
-        'width': '36px',
+        'width': '28px',
+        'margin-right': '2px',
     },
     rankIcon: {
         'width': '24px',
+    },
+    overbuffLink: {
+        'color': 'inherit'
     }
 });
 

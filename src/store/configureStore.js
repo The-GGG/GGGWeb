@@ -13,18 +13,18 @@ middleware = compose(
 const store = createStore(overwatchReducer, middleware);
 
 const players = [
-    {name: 'dan', twitchId: 'coppio', battletag: 'beast-1807', position: 'flex', data: {}},
-    {name: 'cat', twitchId: 'zii604', battletag: 'zii-1831', position: 'support', data: {}},
-    {name: 'matt', twitchId: 'aliacha84', battletag: 'Aliacha-1521', position: 'tank', data: {}},
-    {name: 'adrian', twitchId: 'akwok87', battletag: 'Zarth-1784', position: 'tank', data: {}},
-    {name: 'jeff', twitchId: 'jefdotc', battletag: 'rftr-1562', position: 'flex', data: {}},
-    {name: 'tina', twitchId: '00tuna', battletag: 'tuna-12309', position: 'support', data: {}},
-    {name: 'edward', twitchId: 'the_sinologist', battletag: 'Coldie-1799', position: 'dps', data: {}},
-    {name: 'jp', twitchId: 'superjipped', battletag: 'Jipped-11636', position: 'dps', data: {}},
-    {name: 'irwin', twitchId: 'irwinbilling', battletag: 'stormh4x-1653', position: 'dps', data: {}},
-    {name: 'christine', twitchId: 'stingpan', battletag: 'stingpan-1838', position: 'tank', data: {}},
-    {name: 'dan', twitchId: 'coppio', battletag: 'grapefruit-11670', position: 'flex', data: {}},
-    {name: 'tina', twitchId: '00tuna', battletag: 'ori0n-11251', position: 'support', data: {}},
+    {name: 'dan', twitchId: 'coppio', battletag: 'beast-1807', discordId: 'danny#2128', position: 'flex', data: {}},
+    {name: 'cat', twitchId: 'zii604', battletag: 'zii-1831', discordId: 'CAT#6845', position: 'support', data: {}},
+    {name: 'matt', twitchId: 'aliacha84', battletag: 'Aliacha-1521', discordId: 'Aliacha#2180', position: 'tank', data: {}},
+    {name: 'adrian', twitchId: 'akwok87', battletag: 'Zarth-1784', discordId: 'akwok#5648', position: 'tank', data: {}},
+    {name: 'jeff', twitchId: 'jefdotc', battletag: 'rftr-1562', discordId: 'rftr#2546', position: 'flex', data: {}},
+    {name: 'tina', twitchId: '00tuna', battletag: 'tuna-12309', discordId: 'tuna#0575', position: 'support', data: {}},
+    {name: 'edward', twitchId: 'the_sinologist', battletag: 'Coldie-1799', discordId: 'Edward#4024', position: 'dps', data: {}},
+    {name: 'jp', twitchId: 'superjipped', battletag: 'Jipped-11636', discordId: 'Jipped#7732', youtube: {id: 'UC7zJ4YzO72PVZDYbtjhSY5A', name: 'Jipped'}, position: 'dps', data: {}},
+    {name: 'irwin', twitchId: 'irwinbilling', battletag: 'stormh4x-1653', discordId: 'irwin#0368', position: 'dps', data: {}},
+    {name: 'christine', twitchId: 'stingpan', battletag: 'stingpan-1838', discordId: 'sting#5792', position: 'tank', data: {}},
+    {name: 'dan', twitchId: 'coppio', battletag: 'grapefruit-11670', discordId: 'danny#2128', position: 'flex', data: {}},
+    {name: 'tina', twitchId: '00tuna', battletag: 'ori0n-11251', discordId: 'tuna#0575', position: 'support', data: {}},
 ]
 
 

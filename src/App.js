@@ -32,7 +32,7 @@ const App = ({players, videos, username, token, postAssembleAction, hasAssembled
           {
             players.map((player)=> {
             return <PlayerComponent key={player.battletag} battletag={player.battletag} data={player.data}
-             position={player.position} twitchId={player.twitchId} name={player.name} />
+             position={player.position} twitchId={player.twitchId} name={player.name} youtube={player.youtube} discordId={player.discordId} />
           })}
         </Card.Group>
         </Container>

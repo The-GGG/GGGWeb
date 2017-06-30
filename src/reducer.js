@@ -26,6 +26,8 @@ const overwatchReducer = (state = initialState, action) => {
             battletag: action.player.battletag,
             position: action.player.position,
             twitchId: action.player.twitchId,
+            discordId: action.player.discordId,
+            youtube: action.player.youtube,
             name: action.player.name,
             data: action.data,
         }));

@@ -10,7 +10,7 @@ const AssembleButton = ({username, token, postAssembleAction}) => {
     <div>
   {username ? 
     <button className={`${css(styles.button)} ui orange button`} onClick={() => postAssembleAction(token, 'hello world')}>ASSEMBLE!</button>: <a className={css(styles.button)} href="https://slack.com/oauth/authorize?scope=identity.basic,identity.team&client_id=71819641744.173400203236">
-        <div className={`${css(styles.button)} ui orange button`}>ASSEMBLE!</div>
+        <img src="https://api.slack.com/img/sign_in_with_slack.png" />
       </a>}
     </div>)
 }

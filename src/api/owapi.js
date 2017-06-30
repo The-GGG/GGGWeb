@@ -1,6 +1,11 @@
 import fetch from 'isomorphic-fetch';
 
 const SERVER_HOST = 'http://localhost:5000';
+
+export const fetchMembers = () => {
+    return fetch(`${SERVER_HOST}/members`);
+}
+
 export const fetchOverwatchStats = (battletag) => {
     return fetch(`${SERVER_HOST}/ow/stats/${battletag}`)
 }
